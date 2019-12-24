@@ -1,0 +1,13 @@
+https://Domain:10443, *:80, *:433 {
+    gzip
+    timeouts none
+    log access.log
+    errors errors.log
+    tls {
+        dns cloudflare
+    }
+    proxy /api localhost:10444 {
+        websocket
+        header_upstream -Origin
+    }
+}
